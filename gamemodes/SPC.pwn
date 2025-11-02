@@ -1,11 +1,11 @@
 // Bibliotecas da GM
 
-#include <a_samp> // Biblioteca padr„o do samp
+#include <a_samp> // Biblioteca padr√£o do samp
 #include <g_sqlite> // Biblioteca de salvamento g_sql, que salva em sqlite (por Galarc_Hale)
 #include <izcmd> // Processador de comandos (originalmente por Zeex, e YashasSamaga pelo remake)
-#include <samp_bcrypt> // Plugin de encriptaÁ„o, utilizado nas senhas dos players
+#include <samp_bcrypt> // Plugin de encripta√ß√£o, utilizado nas senhas dos players
 #define SSCANF_NO_NICE_FEATURES
-#include <sscanf2> // Plugin de separaÁ„o de strings (por Y_Less)
+#include <sscanf2> // Plugin de separa√ß√£o de strings (por Y_Less)
 #include <foreach> // Biblioteca de iterators (foreach), normalmente usado como loop em ids de players logados
 
 // Constantes para dialogs
@@ -18,8 +18,8 @@
 #define CALLBACK::%0(%1)			forward %0(%1); \
 									public %0(%1)
 
-#define NAMESERVER					"hostname [SPC] Gamemode Base"
-// Vari·veis globais
+#define NAMESERVER					"hostname [AlderGrounds] Gamemode Base"
+// Vari√°veis globais
 
 enum playerInfos {
 
@@ -35,13 +35,13 @@ new SenhaDigitada[MAX_PLAYERS][24];
 main()
 {
 	print("\n----------------------------------");
-	print(" SPC GameMode SA-MP");
+	print(" AlderGrounds GameMode SA-MP");
 	print("----------------------------------\n");
 }
 
 public OnGameModeInit()
 {
-	SetGameModeText("SPC Base 1.0");
+	SetGameModeText("AlderGrounds Base 1.0");
 	SendRconCommand(NAMESERVER);
 	UsePlayerPedAnims();
 	ResetVarsAdministrativo();
@@ -84,7 +84,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 				if(strcmp(SenhaDigitada[playerid], inputtext)) {
 					
-					SendClientMessage(playerid, -1, "Senhas n„o se coincidem! Se registre novamente");
+					SendClientMessage(playerid, -1, "Senhas n√£o se coincidem! Se registre novamente");
 					format(SenhaDigitada[playerid], 1, "");
 					ShowDialogRegister(playerid);
 					return 1;
@@ -342,16 +342,16 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 
 new veiculo_admin[MAX_VEHICLES_ADM] = INVALID_VEHICLE_ID;
 
-// FunÁıes do Administrativo
+// Fun√ß√µes do Administrativo
 
-stock ComandoAdmin(playerid, niveladmin = 1) { // Usado em comandos admin, para saber se o player tem nivel o suficiente, ou n„o tem nenhum nivel
+stock ComandoAdmin(playerid, niveladmin = 1) { // Usado em comandos admin, para saber se o player tem nivel o suficiente, ou n√£o tem nenhum nivel
 
-	if(PlayerInfo[playerid][pAdmin] == 0) return SendClientMessage(playerid, -1, "VocÍ n„o pode usar um comando admin"), 0;
-	if(PlayerInfo[playerid][pAdmin] < niveladmin) return SendClientMessage(playerid, -1, "VocÍ n„o tem permiss„o para usar esse comando"), 0;
+	if(PlayerInfo[playerid][pAdmin] == 0) return SendClientMessage(playerid, -1, "Voc√™ n√£o pode usar um comando admin"), 0;
+	if(PlayerInfo[playerid][pAdmin] < niveladmin) return SendClientMessage(playerid, -1, "Voc√™ n√£o tem permiss√£o para usar esse comando"), 0;
 	return 1;
 }
 
-stock ResetVarsAdministrativo() { // Arrays do samp tem um problema, ao atribuir somente a celula 0 pega o valor, ent„o essa funÁ„o far· o trabalho que o samp n„o faz
+stock ResetVarsAdministrativo() { // Arrays do samp tem um problema, ao atribuir somente a celula 0 pega o valor, ent√£o essa fun√ß√£o far√° o trabalho que o samp n√£o faz
 
 	for(new i; i < MAX_VEHICLES_ADM; i++) veiculo_admin[i] = INVALID_VEHICLE_ID;
 }
@@ -474,7 +474,7 @@ CMD:veh(playerid, params[]) {
 			return 1;
 		}
 	}
-	SendClientMessage(playerid, -1, "N˙mero m·ximo de veÌculos admin atingidos!");
+	SendClientMessage(playerid, -1, "N√∫mero m√°ximo de ve√≠culos admin atingidos!");
 	return 1;
 }
 
